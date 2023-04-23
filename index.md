@@ -64,7 +64,7 @@ The input that doesn't induce failure is the Array with only one element as noth
 The sypmtoms of these test failures is illogical output, the symptom for the failure test above is {4, 3, 3, 4}. 
 The failure output is shown below:
 ![Image](ReversInPlaceBugTestOutput.png)
- 
+## The ReverseInPlace() method with the bug is shown below:
 ``` 
    static void reverseInPlace(int[] arr) { //only need to change up until half way bc of swapping
     for(int i = 0; i < arr.length; i += 1) {
@@ -72,7 +72,9 @@ The failure output is shown below:
     }
    }
 ``` 
- 
+- This method access the right indexes in the array in the right order but has the wrong values stored at those indexes as the method switches the 
+element before storing the element replaced into a temp variable therefore the data at that index is lost. For example, when the loop finds the last value it assigns it to the first place in Array (index 0) which looses the information about the origional element at index 0 so it ends up being a symmetrical mirror array.
+## The Fixed ReverseInPlace() method is show below:
 ``` 
   static void reverseInPlace(int[] arr) { //only need to change up until half way bc of swapping
     for(int i = 0; i < arr.length/2; i += 1) {
@@ -82,3 +84,6 @@ The failure output is shown below:
     }
   }
 ``` 
+- This bug was fixed by adding a temp varaible and looping through only the first half of the array because a switch will inherinetly update the second half as values are reversed.
+# Part 3: Learnings
+- Throughout this lab I have learned how to use JUnit test in VSCode. My previous expereince with JUnit has been in Eclipse which runs the terminal commands internally. I also learned how to set up a web server which I had no previous knowledge on. 
