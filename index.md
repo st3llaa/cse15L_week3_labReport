@@ -34,4 +34,33 @@ the value for the query is ```s=Welcome to the web server``` containing the mess
 in this example, the value of strs before the request was ```null``` and after the request it was ```null
                                                                                                      Welcome to the web server!```
   
-##Part 2: Bugs
+## Part 2: Bugs
+When running the reversedInPlace() method origionally there was a bug in the code that caused ilogical results.
+All inputs besides an array of length 1 will be failure inducing as if there is only one element nothing is switched. 
+The JUnit test are compiled and run using the commands:
+```
+local $ javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java
+local $ java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore ArrayTests
+```
+## The folloiwing JUnit test fails:
+```
+   @Test
+   public void testReverseInPlaceBugFail(){
+      int[] input = {1,2,3,4};
+      int[] output = {4,3,2,1};
+      ArrayExamples.reverseInPlace(input);
+      assertArrayEquals(output, input);
+   }
+```
+The input that doesn't induce failure is the Array with only one element as nothing needs to be reverse/swapped. 
+## The following JUnit test passes:
+```
+   @Test
+   public void testReverseInPlaceBugPass(){
+      int[] input = {1};
+      assertArrayEquals(input, ArrayExamples.reverseInPlace(input));
+   }
+``` 
+The sypmtoms of these test failures is illogical output, the symptom for the failure test above is {4, 3, 3, 4}. 
+The failure output is shown below:
+![Image](ReversInPlaceBugTestOutput.png)
