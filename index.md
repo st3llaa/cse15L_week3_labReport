@@ -64,3 +64,21 @@ The input that doesn't induce failure is the Array with only one element as noth
 The sypmtoms of these test failures is illogical output, the symptom for the failure test above is {4, 3, 3, 4}. 
 The failure output is shown below:
 ![Image](ReversInPlaceBugTestOutput.png)
+ 
+``` 
+   static void reverseInPlace(int[] arr) { //only need to change up until half way bc of swapping
+    for(int i = 0; i < arr.length; i += 1) {
+      arr[i] = arr[arr.length - i - 1];
+    }
+   }
+``` 
+ 
+``` 
+  static void reverseInPlace(int[] arr) { //only need to change up until half way bc of swapping
+    for(int i = 0; i < arr.length/2; i += 1) {
+      int temp = arr[i]; //origional didn't have a temp variable
+      arr[i] = arr[arr.length-1 - i];
+      arr[arr.length-1 - i] = temp; //swapping the two numbers
+    }
+  }
+``` 
