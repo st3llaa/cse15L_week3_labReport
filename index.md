@@ -63,7 +63,7 @@ The input that doesn't induce failure is the Array with only one element as noth
 ``` 
 The sypmtoms of these test failures is illogical output, the symptom for the failure test above is {4, 3, 3, 4}. 
 The failure output is shown below:
-![Image](ReversInPlaceBugTestOutput.png)
+![Image](ReverseInPlaceBugTestOutput.png)
 ## The ReverseInPlace() method with the bug is shown below:
 ``` 
    static void reverseInPlace(int[] arr) { //only need to change up until half way bc of swapping
